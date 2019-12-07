@@ -1,0 +1,30 @@
+// This turns the heat off in the bed room when someone is at home at 07h 
+// and turns it back on at 08:30h when probably everybody left 
+// on the weekend we have to rely on door detector (TODO)
+
+rule "Radiator bed room weekdays off"
+when
+    Time cron "0 0 7 ? * MON-FRI"
+then
+{
+    if(vEverybodyGone != OFF) 
+    {
+        BedRoom_SetPoint.sendCommand(0)
+        logInfo("RULE", "bed room: Turning the heat off - prepare for ventilation")
+    }
+    else 
+    {
+        logInfo("RULE", "Bed room: prevented ventilation turn off - nobody is at home")
+    }
+} 
+end
+
+rule "Radiator bed room weekdays on"
+when
+    Time cron "0 30 8 ? * MON-FRI"
+then
+{
+    BedRoom_SetPoint.sendCommand(16)
+    logInfo("RULE", "Bed room: Turning the heat up") 
+} 
+end

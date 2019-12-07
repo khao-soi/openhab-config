@@ -1,0 +1,43 @@
+rule "Radiator living room weekdays on"
+when
+    Time cron "0 0 17 ? * MON-FRI"
+then
+{
+    if(vEverybodyGone != OFF) 
+    {
+        LivingRoom_SetPoint.sendCommand(21)
+        logInfo("RULE", "Living room: Turning the heat up")
+    }
+    else 
+    {
+        logInfo("RULE", "Living room: prevented heating - nobody is at home")
+    }
+} 
+end
+
+rule "Radiator living room weekend on"
+when
+    Time cron "0 0 10 ? * SAT-SUN"
+then
+{
+    if(vEverybodyGone != OFF) 
+    {
+        LivingRoom_SetPoint.sendCommand(21)
+        logInfo("RULE", "Living room: Turning the heat up")
+    }
+    else 
+    {
+        logInfo("RULE", "Living room: prevented heating - nobody is at home")
+    }
+} 
+end
+
+rule "Radiator living room weekend off"
+when
+    TIME cron "0 00 23 ? * MON-SUN"
+then
+{
+    radiatorLivingroom.Setpoint(16)
+    logInfo("RULE", "Living room: Turning the heat down")
+} 
+end

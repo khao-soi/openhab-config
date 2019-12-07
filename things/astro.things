@@ -1,0 +1,3 @@
+Thing astro:moon:home  "Moon Data"          [ geolocation="51.309986,9.483541,167", interval=300 ]
+Thing astro:sun:home   "Sun Data"           [ geolocation="51.309986,9.483541,167", interval=300 ]
+Thing astro:sun:minus90 "Sun Data -60min"   [ geolocation="51.309986,9.483541,167", interval=300 ] // +15 degrees == -60 minutes

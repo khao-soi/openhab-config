@@ -1,0 +1,13 @@
+rule "sunrise"
+when
+    Channel 'astro:sun:home:rise#event' triggered START
+then
+    logInfo("RULE", "sunrise")
+end
+
+rule "sunset"
+when
+    Channel 'astro:sun:home:set#event' triggered START
+then
+    logInfo("RULE", "sunset")
+end

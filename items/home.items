@@ -1,0 +1,12 @@
+Group gBedRoom
+Group gLivingRoom
+Group gTemperature
+Group gBattery
+
+Number	LivingRoom_Temp 			"Wohnzimmer Temperatur [%.1f °C]"			<temperature>	(gLivingRoom, gTemperature)			{ channel="zwave:device:921a5654:node3:sensor_temperature" }	
+Number	LivingRoom_SetPoint     	"Wohnzimmer Temperatur Vorwahl [%.1f °C]"	<temperature>	(gLivingRoom)						{ channel="zwave:device:921a5654:node3:thermostat_setpoint_heating" }	
+Number  LivingRoom_BatteryLeven     "Wohnzimmer Thermostat Batterielevel"       <battery>       (gBedRoom, gBattery)                { channel="zwave:device:921a5654:node3:battery-level" }
+
+Number	BedRoom_Temp 				"Schlafzimmer Temperatur [%.1f °C]"			<temperature>	(gBedRoom, gTemperature)			{ channel="zwave:device:921a5654:node4:sensor_temperature" }	
+Number	BedRoom_SetPoint     		"Schlafzimmer Temperatur Vorwahl [%.1f °C]"	<temperature>	(gBedRoom)						    { channel="zwave:device:921a5654:node4:thermostat_setpoint_heating" }	
+Number  BedRoom_BatteryLeven        "Schlafzimmer Thermostat Batterielevel"     <battery>       (gBedRoom, gBattery)                { channel="zwave:device:921a5654:node4:battery-level" }

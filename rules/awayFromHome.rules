@@ -1,0 +1,82 @@
+// Michel
+rule "Michel away from home"
+when
+    Item phoneMichelOnline changed to CLOSED
+then
+    // TODO: loop
+    Thread::sleep(60000)
+    if(phoneMichelOnline.state==CLOSED) 
+    {
+        Thread::sleep(60000)
+        if(phoneMichelOnline.state==CLOSED) 
+        { 
+            Thread::sleep(60000)
+            if(phoneMichelOnline.state==CLOSED) 
+            { 
+                logInfo("RULE", "Michel left the building")
+                postUpdate(vMichelGone, ON)
+            }
+        }
+    }
+end
+
+rule "Michel came back"
+when
+    Item phoneMichelOnline changed to OPEN
+then
+    logInfo("RULE", "Michel is back home")
+    postUpdate(vMichelGone, OFF)
+end
+
+// Alexa
+rule "Alexa away from home"
+when
+    Item phoneAlexaOnline changed to CLOSED
+then
+    // TODO: loop
+    Thread::sleep(60000)
+    if(phoneAlexaOnline.state==CLOSED) 
+    {
+        Thread::sleep(60000)
+        if(phoneAlexaOnline.state==CLOSED) 
+        { 
+            Thread::sleep(60000)
+            if(phoneAlexaOnline.state==CLOSED) 
+            { 
+                logInfo("RULE", "Alexa left the building")
+                postUpdate(vAlexaGone, ON)
+            }
+        }
+    }
+end
+
+rule "Alexa came back"
+when
+    Item phoneAlexaOnline changed to OPEN
+then
+    logInfo("RULE", "Alexa is back home")
+    postUpdate(vAlexaGone, OFF)
+end
+
+// Everybody
+rule "Everybody is away from home"
+when
+	Item vAlexaGone changed to ON or Item vMichelGone changed to ON
+then
+	if(phoneAlexaOnline.state == CLOSED && phoneMichelOnline.state == CLOSED) 
+    {
+		logInfo("RULE", "Everybody is away from home")
+		postUpdate(vEverybodyGone, ON)
+	}
+end
+
+rule "Everybody is at home"
+when
+	Item vAlexaGone changed to OFF or Item vMichelGone changed to OFF
+then
+	if(vEverybodyGone != OFF)
+    {
+		logInfo("RULE", "Everybody is at home")
+		postUpdate(vEverybodyGone, OFF)
+	}
+end
