@@ -1,0 +1,5 @@
+Group gTv
+
+Switch  tvPower     "Samsung TV Power"  (gTv,gLivingRoom)   {channel="samsungtv:tv:204e0f91_cd41_4898_a248_460893ab3f5b:power"}
+Dimmer  tvVolume    "Samsung TV Volume" (gTv,gLivingRoom)   {channel="samsungtv:tv:204e0f91_cd41_4898_a248_460893ab3f5b:volume"}
+Switch  tvMute      "Samsung TV Mute"   (gTv,gLivingRoom)   {channel="samsungtv:tv:204e0f91_cd41_4898_a248_460893ab3f5b:mute"}
