@@ -1,6 +1,6 @@
 rule "Radiator living room weekdays on"
 when
-    Time cron "0 0 17 ? * MON-FRI"
+    Time cron "0 30 17 ? * MON-FRI"
 then
 {
     if(vEverybodyGone != OFF) 
@@ -34,7 +34,7 @@ end
 
 rule "Radiator living room weekend off"
 when
-    TIME cron "0 00 23 ? * MON-SUN"
+    Time cron "0 00 23 ? * MON-SUN"
 then
 {
     radiatorLivingroom.Setpoint(16)
