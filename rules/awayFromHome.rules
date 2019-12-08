@@ -76,7 +76,7 @@ when
 then
 	if(vEverybodyGone != OFF)
     {
-		logInfo("RULE", "Everybody is at home")
+		logInfo("RULE", "Someone is at home")
 		postUpdate(vEverybodyGone, OFF)
 	}
 end
