@@ -1,8 +1,12 @@
+var Boolean heatingTime = false; // store heating time in case someone comes home
+
 rule "Radiator living room weekdays on"
 when
     Time cron "0 30 17 ? * MON-FRI"
 then
 {
+    heatingTime = true;
+
     if(vEverybodyGone != OFF) 
     {
         LivingRoom_SetPoint.sendCommand(21)
@@ -20,6 +24,8 @@ when
     Time cron "0 0 10 ? * SAT-SUN"
 then
 {
+    heatingTime = true;
+
     if(vEverybodyGone != OFF) 
     {
         LivingRoom_SetPoint.sendCommand(21)
@@ -32,12 +38,14 @@ then
 } 
 end
 
-rule "Radiator living room weekend off"
+rule "Radiator living room off"
 when
     Time cron "0 00 23 ? * MON-SUN"
 then
 {
-    radiatorLivingroom.Setpoint(16)
+    heatingTime = false;
+
+    LivingRoom_SetPoint.sendCommand(16)
     logInfo("RULE", "Living room: Turning the heat down")
 } 
 end
