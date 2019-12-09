@@ -1,12 +1,14 @@
 Group gAstro
+Group gSun
+Group gMoon
 
-DateTime         Sunrise_Time       "Sunrise [%1$tH:%1$tM]"                   (gAstro)   { channel="astro:sun:home:rise#start" }
-DateTime         Sunset_Time        "Sunset [%1$tH:%1$tM]"                    (gAstro)   { channel="astro:sun:home:set#start" }
-Number:Angle     Azimuth            "Azimuth"                                 (gAstro)   { channel="astro:sun:home:position#azimuth" }
-Number:Angle     Elevation          "Elevation"                               (gAstro)   { channel="astro:sun:home:position#elevation" }
-String           MoonPhase          "MoonPhase"                               (gAstro)   { channel="astro:moon:home:phase#name" }
-Number:Length    MoonDistance       "MoonDistance [%.1f %unit%]"              (gAstro)   { channel="astro:moon:home:distance#distance" }
-Number:Intensity Total_Radiation    "Radiation [%.2f %unit%]"                 (gAstro)   { channel="astro:sun:home:radiation#total" }
-Number:Intensity Diffuse_Radiation  "Diffuse Radiation [%.2f %unit%]"         (gAstro)   { channel="astro:sun:home:radiation#diffuse" }
+DateTime         Sunrise_Time       "Sunrise [%1$tH:%1$tM]"                   (gAstro, gSun)    { channel="astro:sun:home:rise#start" }
+DateTime         Sunset_Time        "Sunset [%1$tH:%1$tM]"                    (gAstro, gSun)    { channel="astro:sun:home:set#start" }
+Number:Angle     Azimuth            "Azimuth"                                 (gAstro)          { channel="astro:sun:home:position#azimuth" }
+Number:Angle     Elevation          "Elevation"                               (gAstro)          { channel="astro:sun:home:position#elevation" }
+String           MoonPhase          "MoonPhase"                               (gAstro)          { channel="astro:moon:home:phase#name" }
+Number:Length    MoonDistance       "MoonDistance [%.1f %unit%]"              (gAstro)          { channel="astro:moon:home:distance#distance" }
+Number:Intensity Total_Radiation    "Radiation [%.2f %unit%]"                 (gAstro)          { channel="astro:sun:home:radiation#total" }
+Number:Intensity Diffuse_Radiation  "Diffuse Radiation [%.2f %unit%]"         (gAstro)          { channel="astro:sun:home:radiation#diffuse" }
 
 Switch           vIsNight             "Nightime indicater"                    <nighttime>
