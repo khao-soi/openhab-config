@@ -2,4 +2,24 @@ sitemap home label="H21"
 {
     Frame label="Alexa" icon="network" { Text item=vAlexaGone }
     Frame label="Michel" icon="network" { Text item=vMichelGone }    
+
+    Text item=SpeedtestSummary 
+    {
+        Frame label="Results" 
+        {
+            Text item=SpeedtestResultDown
+            Text item=SpeedtestResultUp
+            Text item=SpeedtestResultPing
+        }
+        Frame label="Controlling" 
+        {
+            Text item=SpeedtestResultDate
+            Text item=SpeedtestRunning label="Speedtest [%s]" visibility=[SpeedtestRunning != "-"]
+            Switch item=SpeedtestRerun mappings=[ON="Start"]
+        }
+        Frame label="Statistics" 
+        {
+            Text label="..." icon="speedtest_analytics8"
+        }
+    }
 }
