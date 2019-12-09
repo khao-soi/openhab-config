@@ -1,11 +1,11 @@
-var Boolean heatingTime = false; // store heating time in case someone comes home
+var Boolean heatingTime = false // store heating time in case someone comes home
 
 rule "Radiator living room weekdays on"
 when
     Time cron "0 30 17 ? * MON-FRI"
 then
 {
-    heatingTime = true;
+    heatingTime = true
 
     if(vEverybodyGone != OFF) 
     {
@@ -24,7 +24,7 @@ when
     Time cron "0 0 10 ? * SAT-SUN"
 then
 {
-    heatingTime = true;
+    heatingTime = true
 
     if(vEverybodyGone != OFF) 
     {
@@ -43,9 +43,23 @@ when
     Time cron "0 00 23 ? * MON-SUN"
 then
 {
-    heatingTime = false;
+    heatingTime = false
 
     LivingRoom_SetPoint.sendCommand(16)
+    LivingRoom_WallplugTV.sendCommand(OFF)
     logInfo("RULE", "Living room: Turning the heat down")
 } 
+end
+
+rule "TV Lamp"
+when 
+    Time cron "0,15,30,45 * * ? * MON-SUN"
+then
+{
+    if(isNight == true && vEverybodyGone != OFF && tvPower == ON) 
+    {
+        LivingRoom_WallplugTV.sendCommand(ON)
+        logInfo("RULE", "Living room: Switching TV lamp on")
+    }
+}
 end

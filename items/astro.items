@@ -8,3 +8,5 @@ String           MoonPhase          "MoonPhase"                               (g
 Number:Length    MoonDistance       "MoonDistance [%.1f %unit%]"              (gAstro)   { channel="astro:moon:home:distance#distance" }
 Number:Intensity Total_Radiation    "Radiation [%.2f %unit%]"                 (gAstro)   { channel="astro:sun:home:radiation#total" }
 Number:Intensity Diffuse_Radiation  "Diffuse Radiation [%.2f %unit%]"         (gAstro)   { channel="astro:sun:home:radiation#diffuse" }
+
+Switch           vIsNight             "Nightime indicater"                    <nighttime>
