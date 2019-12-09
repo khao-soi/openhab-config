@@ -1,0 +1,14 @@
+Strategies 
+{
+    everyMinute : "0 * * * * ?"
+    everyHour   : "0 0 * * * ?"
+    everyDay    : "0 0 0 * * ?"
+}
+
+Items 
+{
+    gTemperature*, gBattery*   			    : strategy = everyChange, everyHour
+    phoneAlexaOnline, phoneMichelOnline     : strategy = everyChange
+    gSun*                                   : strategy = everyChange
+    gWallplug*					            : strategy = everyChange, everyHour
+}
