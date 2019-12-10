@@ -9,7 +9,8 @@ then
 {
     if(vEverybodyGone != OFF) 
     {
-        BedRoom_SetPoint.sendCommand(0)
+        BedRoom_SetPoint.sendCommand(5)
+        BedRoom_ThermMode.sendCommand(0)
         logInfo("RULE", "bed room: Turning the heat off - prepare for ventilation")
     }
     else 
@@ -24,6 +25,7 @@ when
     Time cron "0 30 8 ? * MON-FRI"
 then
 {
+    BedRoom_ThermMode.sendCommand(11)
     BedRoom_SetPoint.sendCommand(16)
     logInfo("RULE", "Bed room: Turning the heat up") 
 } 
