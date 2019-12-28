@@ -1,6 +1,7 @@
 // Contacts
 Contact phoneMichelOnline     "Michels Telefon (Wifi) [MAP(presence.map):%s]"       <network>       {fritzboxtr064="maconline:44-91-60-67-70-07"}
 Contact phoneAlexaOnline      "Alexas Telefon (Wifi) [MAP(presence.map):%s]"        <network>       {fritzboxtr064="maconline:28-A0-2B-BD-25-9D"}
+Contact xps13                 "Michels Arbeitslaptop (Wifi) [MAP(presence.map):%s]" <network>       {fritzboxtr064="maconline:9C-B6-D0-90-05-F7"}
 
 // Common
 
@@ -49,6 +50,8 @@ Number  fboxDslCRCErrors "DSL CRC Errors [%s]" {fritzboxtr064="dslCRCErrors"}
 
 
 // Variables
-Switch  vEverybodyGone  "Everybody is gone" <allgone>
-Switch  vMichelGone     "Michel is gone"    <michelgone>
-Switch  vAlexaGone      "Alexa is gone"     <alexagone> 
+Switch  vEverybodyGone          "Everybody is gone"         <allgone>
+Switch  vMichelGone             "Michel is gone"            <michelgone>
+Switch  vAlexaGone              "Alexa is gone"             <alexagone> 
+
+Switch  vMichelWorkBoxOnline    "Michels Workbox is online" <michelworkboxonline>

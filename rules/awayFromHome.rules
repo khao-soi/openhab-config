@@ -80,3 +80,23 @@ then
 		postUpdate(vEverybodyGone, OFF)
 	}
 end
+
+rule "Michel's workbox is online"
+when
+    Item xps13 changed to OPEN
+then
+    logInfo("RULE", "Michel's workbox is online")
+    postUpdate(vMichelWorkBoxOnline, ON)
+end
+
+rule "Michel's workbox is offline"
+when
+    Item xps13 changed to CLOSED
+then
+    Thread::sleep(60000)
+    if(phoneAlexaOnline.state==CLOSED) 
+    { 
+        logInfo("RULE", "Michel's workbox is offline")
+        postUpdate(vMichelWorkBoxOnline, OFF)
+    }
+end
