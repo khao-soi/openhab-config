@@ -2,6 +2,7 @@ sitemap home label="H21"
 {
     Frame label="Alexa" icon="network" { Text item=vAlexaGone }
     Frame label="Michel" icon="network" { Text item=vMichelGone }    
+    Frame label="Michel's Workbox" icon="network" { Text item=vMichelWorkBoxOnline }    
 
     Text item=SpeedtestSummary 
     {
