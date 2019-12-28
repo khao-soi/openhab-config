@@ -7,8 +7,8 @@ Strategies
 
 Items 
 {
-    gTemperature*, gBattery*   			    : strategy = everyChange, everyHour
-    phoneAlexaOnline, phoneMichelOnline     : strategy = everyChange
-    gSun*, gSpeedtest*                      : strategy = everyChange
-    gWallplug*					            : strategy = everyChange, everyHour
+    gTemperature*, gBattery*,gLocalWeather*     : strategy = everyChange, everyHour
+    phoneAlexaOnline, phoneMichelOnline         : strategy = everyChange
+    gSun*, gSpeedtest*                          : strategy = everyChange
+    gWallplug*					                : strategy = everyChange, everyHour
 }

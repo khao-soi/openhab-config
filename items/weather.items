@@ -1,3 +1,5 @@
+Group gLocalWeather
+
 String localStationId "ID [%s]" { channel="openweathermap:weather-and-forecast:api:local:station#id" }
 String localStationName "Name [%s]" { channel="openweathermap:weather-and-forecast:api:local:station#name" }
 Location localStationLocation "Location [%2$s°N %3$s°E]" <location> { channel="openweathermap:weather-and-forecast:api:local:station#location" }
@@ -5,14 +7,14 @@ Location localStationLocation "Location [%2$s°N %3$s°E]" <location> { channel=
 DateTime localLastMeasurement "Timestamp of last measurement [%1$tY-%1$tm-%1$tdT%1$tH:%1$tM:%1$tS]" <time> { channel="openweathermap:weather-and-forecast:api:local:current#time-stamp" }
 String localCurrentCondition "Current condition [%s]" <sun_clouds> { channel="openweathermap:weather-and-forecast:api:local:current#condition" }
 Image localCurrentConditionIcon "Icon" { channel="openweathermap:weather-and-forecast:api:local:current#icon" }
-Number:Temperature localCurrentTemperature "Current temperature [%.1f %unit%]" <temperature> { channel="openweathermap:weather-and-forecast:api:local:current#temperature" }
-Number:Pressure localCurrentPressure "Current barometric pressure [%.1f %unit%]" <pressure> { channel="openweathermap:weather-and-forecast:api:local:current#pressure" }
-Number:Dimensionless localCurrentHumidity "Current atmospheric humidity [%d %unit%]" <humidity> { channel="openweathermap:weather-and-forecast:api:local:current#humidity" }
-Number:Speed localCurrentWindSpeed "Current wind speed [%.1f km/h]" <wind> { channel="openweathermap:weather-and-forecast:api:local:current#wind-speed" }
+Number:Temperature localCurrentTemperature "Current temperature [%.1f %unit%]" <temperature> (gLocalWeather) { channel="openweathermap:weather-and-forecast:api:local:current#temperature" }
+Number:Pressure localCurrentPressure "Current barometric pressure [%.1f %unit%]" <pressure> (gLocalWeather) { channel="openweathermap:weather-and-forecast:api:local:current#pressure" }
+Number:Dimensionless localCurrentHumidity "Current atmospheric humidity [%d %unit%]" <humidity> (gLocalWeather) { channel="openweathermap:weather-and-forecast:api:local:current#humidity" }
+Number:Speed localCurrentWindSpeed "Current wind speed [%.1f km/h]" <wind> (gLocalWeather) { channel="openweathermap:weather-and-forecast:api:local:current#wind-speed" }
 Number:Angle localCurrentWindDirection "Current wind direction [%d %unit%]" <wind> { channel="openweathermap:weather-and-forecast:api:local:current#wind-direction" }
 Number:Dimensionless localCurrentCloudiness "Current cloudiness [%d %unit%]" <clouds> { channel="openweathermap:weather-and-forecast:api:local:current#cloudiness" }
-Number:Length localCurrentRainVolume "Current rain volume [%.1f %unit%]" <rain> { channel="openweathermap:weather-and-forecast:api:local:current#rain" }
-Number:Length localCurrentSnowVolume "Current snow volume [%.1f %unit%]" <snow> { channel="openweathermap:weather-and-forecast:api:local:current#snow" }
+Number:Length localCurrentRainVolume "Current rain volume [%.1f %unit%]" <rain> (gLocalWeather) { channel="openweathermap:weather-and-forecast:api:local:current#rain" }
+Number:Length localCurrentSnowVolume "Current snow volume [%.1f %unit%]" <snow> (gLocalWeather) { channel="openweathermap:weather-and-forecast:api:local:current#snow" }
 Number:Length localCurrentVisibility "Current visibility [%.1f km]" <visibility> { channel="openweathermap:weather-and-forecast:api:local:current#visibility" }
 
 DateTime localDailyForecastTodayTimestamp "Timestamp of forecast [%1$tY-%1$tm-%1$td]" <time> { channel="openweathermap:weather-and-forecast:api:local:forecastToday#time-stamp" }
