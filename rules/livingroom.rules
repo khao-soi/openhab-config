@@ -1,4 +1,5 @@
 var Boolean heatingTime = false // store heating time in case someone comes home
+var Boolean someIsHereAtNine = false 
 
 rule "Radiator living room weekdays on"
 when
@@ -46,20 +47,51 @@ then
     heatingTime = false
 
     LivingRoom_SetPoint.sendCommand(16)
-    LivingRoom_WallplugTV.sendCommand(OFF)
+    
+    if(tvPower == OFF)
+        LivingRoom_WallplugTV.sendCommand(OFF)
+
     logInfo("RULE", "Living room: Turning the heat down")
 } 
 end
 
-rule "TV Lamp"
+/*rule "TV Lamp"
 when 
     Time cron "0,15,30,45 * * ? * MON-SUN"
 then
 {
-    if(isNight == true && vEverybodyGone != OFF && tvPower == ON) 
+    if(vIsNight == true && vEverybodyGone != OFF && tvPower == ON) 
     {
         LivingRoom_WallplugTV.sendCommand(ON)
         logInfo("RULE", "Living room: Switching TV lamp on")
+    }
+}
+end*/
+
+rule "Someone is here weekdays at 9"
+when
+    Time cron "0 0 9 ? * MON-FRI"
+then
+{
+    someIsHereAtNine = false
+
+    if(vEverybodyGone != OFF) 
+    {
+        someIsHereAtNine = true
+        logInfo("RULE", "Someone is here weekdays at nine")
+    }
+}
+end
+
+rule "Someone is here weekdays"
+when
+    Time cron "0 30 9 ? * MON-FRI"
+then
+{
+    if(vEverybodyGone != OFF && someIsHereAtNine == true) 
+    {
+        LivingRoom_SetPoint.sendCommand(21)
+        logInfo("RULE", "Some is here weekdays, turn the heat on")
     }
 }
 end
