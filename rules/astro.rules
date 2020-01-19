@@ -1,11 +1,9 @@
-//var Boolean isNight = false
-
 rule "sunrise"
 when
     Channel 'astro:sun:home:rise#event' triggered START
 then
 {    
-    vIsNight = false
+    postUpdate(vIsNight, OFF)
     logInfo("RULE", "sunrise")
 }
 end
@@ -15,7 +13,7 @@ when
     Channel 'astro:sun:home:set#event' triggered START
 then
 {    
-    vIsNight = true
+    postUpdate(vIsNight, ON)
     logInfo("RULE", "sunset")
 }
 end
