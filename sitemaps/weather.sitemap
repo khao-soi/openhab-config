@@ -1,4 +1,4 @@
-sitemap demo label="OpenWeatherMap" {
+sitemap weather label="OpenWeatherMap" {
     Frame label="Local Weather Station" {
         Text item=localStationId
         Text item=localStationName
