@@ -3,6 +3,8 @@ Group gLivingRoom
 Group gTemperature
 Group gBattery
 Group gWallplug
+Group gBathroom
+Group gDiningRoom
 
 // # Thermostat Mode:
 // 0: Off
@@ -11,14 +13,29 @@ Group gWallplug
 // 15: Full Power
 // 31: Manual
 
-Number	LivingRoom_Temp 			"Wohnzimmer Temperatur [%.1f °C]"			<temperature>	(gLivingRoom, gTemperature)			{ channel="zwave:device:921a5654:node3:sensor_temperature" }	
-Number	LivingRoom_SetPoint     	"Wohnzimmer Temperatur Vorwahl [%.1f °C]"	<temperature>	(gLivingRoom)						{ channel="zwave:device:921a5654:node3:thermostat_setpoint_heating" }
-Number  LivingRoom_ThermMode        "Wohnzimmer Temperatur Mode"                <temperature>   (gLivingRoom)                       { channel="zwave:device:921a5654:node3:thermostat_mode" }
-Number  LivingRoom_BatteryLevel     "Wohnzimmer Thermostat Batterielevel"       <battery>       (gLivingRoom, gBattery)             { channel="zwave:device:921a5654:node3:battery-level" }
-Switch  LivingRoom_WallplugTV       "Wohnzimmer Wallplug TV"                    <wallplug>      (gLivingRoom, gWallplug)            { channel="zwave:device:921a5654:node5:switch_binary" }
-Number  LivingRoom_WallplugWatts    "Wohnzimmer Wallplug Watt"                  <energy>        (gLivingRoom, gWallplug)            { channel="zwave:device:921a5654:node5:meter_watts" }
+Number	LivingRoom_Temp 			"Wohnzimmer Temperatur [%.1f °C]"			<temperature>	(gLivingRoom, gTemperature)			{ channel="zwave:device:dd17dc98:node3:sensor_temperature" }	
+Number	LivingRoom_SetPoint     	"Wohnzimmer Temperatur Vorwahl [%.1f °C]"	<temperature>	(gLivingRoom)						{ channel="zwave:device:dd17dc98:node3:thermostat_setpoint_heating" }
+Number  LivingRoom_ThermMode        "Wohnzimmer Temperatur Mode"                <temperature>   (gLivingRoom)                       { channel="zwave:device:dd17dc98:node3:thermostat_mode" }
+Number  LivingRoom_BatteryLevel     "Wohnzimmer Thermostat Batterielevel"       <battery>       (gLivingRoom, gBattery)             { channel="zwave:device:dd17dc98:node3:battery-level" }
 
-Number	BedRoom_Temp 				"Schlafzimmer Temperatur [%.1f °C]"			<temperature>	(gBedRoom, gTemperature)			{ channel="zwave:device:921a5654:node4:sensor_temperature" }	
-Number	BedRoom_SetPoint     		"Schlafzimmer Temperatur Vorwahl [%.1f °C]"	<temperature>	(gBedRoom)						    { channel="zwave:device:921a5654:node4:thermostat_setpoint_heating" }
-Number  BedRoom_ThermMode           "Schlafzimmer Temperatur Mode"              <temperature>   (gBedRoom)                          { channel="zwave:device:921a5654:node4:thermostat_mode" }	
-Number  BedRoom_BatteryLevel        "Schlafzimmer Thermostat Batterielevel"     <battery>       (gBedRoom, gBattery)                { channel="zwave:device:921a5654:node4:battery-level" }
+Switch  LivingRoom_WallplugTV       "Wohnzimmer Wallplug TV"                    <wallplug>      (gLivingRoom, gWallplug)            { channel="zwave:device:dd17dc98:node5:switch_binary" }
+Number  LivingRoom_WallplugWatts    "Wohnzimmer Wallplug Watt"                  <energy>        (gLivingRoom, gWallplug)            { channel="zwave:device:dd17dc98:node5:meter_watts" }
+
+Number	BedRoom_Temp 				"Schlafzimmer Temperatur [%.1f °C]"			<temperature>	(gBedRoom, gTemperature)			{ channel="zwave:device:dd17dc98:node4:sensor_temperature" }	
+Number	BedRoom_SetPoint     		"Schlafzimmer Temperatur Vorwahl [%.1f °C]"	<temperature>	(gBedRoom)						    { channel="zwave:device:dd17dc98:node4:thermostat_setpoint_heating" }
+Number  BedRoom_ThermMode           "Schlafzimmer Temperatur Mode"              <temperature>   (gBedRoom)                          { channel="zwave:device:dd17dc98:node4:thermostat_mode" }	
+Number  BedRoom_BatteryLevel        "Schlafzimmer Thermostat Batterielevel"     <battery>       (gBedRoom, gBattery)                { channel="zwave:device:dd17dc98:node4:battery-level" }
+
+Number	BathRoom_Temp 				"Bad Temperatur [%.1f °C]"			        <temperature>	(gBathroom, gTemperature)			{ channel="zwave:device:dd17dc98:node7:sensor_temperature" }	
+Number	BathRoom_SetPoint     		"Bad Temperatur Vorwahl [%.1f °C]"	        <temperature>	(gBathroom)						    { channel="zwave:device:dd17dc98:node7:thermostat_setpoint_heating" }
+Number  BathRoom_ThermMode          "Bad Temperatur Mode"                       <temperature>   (gBathroom)                         { channel="zwave:device:dd17dc98:node7:thermostat_mode" }	
+Number  BathRoom_BatteryLevel       "Bad Thermostat Batterielevel"              <battery>       (gBathroom, gBattery)               { channel="zwave:device:dd17dc98:node7:battery-level" }
+
+Number	DiningRoom_Temp 			"Esszimmer Temperatur [%.1f °C]"			<temperature>	(gDiningRoom, gTemperature)			{ channel="zwave:device:dd17dc98:node6:sensor_temperature" }	
+Number	DiningRoom_SetPoint     	"Esszimmer Temperatur Vorwahl [%.1f °C]"	<temperature>	(gDiningRoom)						{ channel="zwave:device:dd17dc98:node6:thermostat_setpoint_heating" }
+Number  DiningRoom_ThermMode        "Esszimmer Temperatur Mode"                 <temperature>   (gDiningRoom)                       { channel="zwave:device:dd17dc98:node6:thermostat_mode" }	
+Number  DiningRoom_BatteryLevel     "Esszimmer Thermostat Batterielevel"        <battery>       (gDiningRoom, gBattery)             { channel="zwave:device:dd17dc98:node6:battery-level" }
+
+Contact LivingRoom_DoorSensor       "Wohnzimmer Türsensor Status"               <contact>       (gLivingRoom)                       { channel="zwave:device:dd17dc98:node8:sensor_door" }
+Switch  LivingRoom_TamperAlarm      "Wohnzimmer Türsensor Manipulationsalarm"   <alarm>         (gLivingRoom)                       { channel="zwave:device:dd17dc98:node8:alarm_tamper" }
+Number  LivingRoom_DoorBatteryLevel "Wohnzimmer Türsensor Batterielevel"        <battery>       (gLivingRoom, gBattery)             { channel="zwave:device:dd17dc98:node8:battery-level" }
