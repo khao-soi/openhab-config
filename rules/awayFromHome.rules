@@ -1,22 +1,31 @@
+var Boolean alexaIsGone = false
+var Boolean michelIsGone = false
+
 // Michel
 rule "Michel away from home"
 when
     Item phoneMichelOnline changed to CLOSED
 then
-    // TODO: loop
-    Thread::sleep(60000)
-    if(phoneMichelOnline.state==CLOSED) 
+    logInfo("RULE", "Michel might be gone")
+
+    var i = 0
+    while((i = i + 1 ) < 3) 
     {
         Thread::sleep(60000)
-        if(phoneMichelOnline.state==CLOSED) 
-        { 
-            Thread::sleep(60000)
-            if(phoneMichelOnline.state==CLOSED) 
-            { 
-                logInfo("RULE", "Michel left the building")
-                postUpdate(vMichelGone, ON)
-            }
+        if(phoneMichelOnline.state == CLOSED) 
+        {
+            michelIsGone = true
         }
+        else 
+        {
+            michelIsGone = false
+        }
+    }
+
+    if(michelIsGone) 
+    {
+        logInfo("RULE", "Michel left the building")
+        postUpdate(vMichelGone, ON)
     }
 end
 
@@ -33,20 +42,24 @@ rule "Alexa away from home"
 when
     Item phoneAlexaOnline changed to CLOSED
 then
-    // TODO: loop
-    Thread::sleep(60000)
-    if(phoneAlexaOnline.state==CLOSED) 
+    var i = 0
+    while((i = i + 1 ) < 3) 
     {
         Thread::sleep(60000)
-        if(phoneAlexaOnline.state==CLOSED) 
-        { 
-            Thread::sleep(60000)
-            if(phoneAlexaOnline.state==CLOSED) 
-            { 
-                logInfo("RULE", "Alexa left the building")
-                postUpdate(vAlexaGone, ON)
-            }
+        if(phoneAlexaOnline.state == CLOSED) 
+        {
+            alexaIsGone = true
         }
+        else 
+        {
+            alexaIsGone = false
+        }
+    }
+
+    if(alexaIsGone) 
+    {
+        logInfo("RULE", "Alexa left the building")
+        postUpdate(vAlexaGone, ON)
     }
 end
 
@@ -94,9 +107,10 @@ when
     Item xps13 changed to CLOSED
 then
     Thread::sleep(60000)
-    if(phoneAlexaOnline.state==CLOSED) 
+    if(phoneAlexaOnline.state == CLOSED) 
     { 
         logInfo("RULE", "Michel's workbox is offline")
         postUpdate(vMichelWorkBoxOnline, OFF)
     }
 end
+ 
