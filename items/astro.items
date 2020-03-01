@@ -12,3 +12,4 @@ Number:Intensity Total_Radiation    "Radiation [%.2f %unit%]"                 (g
 Number:Intensity Diffuse_Radiation  "Diffuse Radiation [%.2f %unit%]"         (gAstro)          { channel="astro:sun:home:radiation#diffuse" }
 
 Switch           vIsNight             "Nightime indicater"                    <nighttime>
+ 

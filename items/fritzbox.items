@@ -55,3 +55,4 @@ Switch  vMichelGone             "Michel is gone"            <michelgone>
 Switch  vAlexaGone              "Alexa is gone"             <alexagone> 
 
 Switch  vMichelWorkBoxOnline    "Michels Workbox is online" <michelworkboxonline>
+ 

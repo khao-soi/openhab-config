@@ -1,0 +1,8 @@
+Group Sonos <player>
+
+Player Sonos_Controller   "Controller"                          (Sonos) {channel="sonos:Beam:living:control"}
+Dimmer Sonos_Volume       "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:Beam:living:volume"}
+Switch Sonos_Mute         "Mute"             <soundvolume_mute> (Sonos) {channel="sonos:Beam:living:mute"}
+Switch Sonos_LED          "LED"              <switch>           (Sonos) {channel="sonos:Beam:living:led"}
+String Sonos_CurrentTrack "Now playing [%s]" <text>             (Sonos) {channel="sonos:Beam:living:currenttrack"}
+String Sonos_State        "Status [%s]"      <text>             (Sonos) {channel="sonos:Beam:living:state"}
