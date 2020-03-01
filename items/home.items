@@ -30,6 +30,8 @@ Number	BathRoom_Temp 				"Bad Temperatur [%.1f °C]"			        <temperature>	(gB
 Number	BathRoom_SetPoint     		"Bad Temperatur Vorwahl [%.1f °C]"	        <temperature>	(gBathroom)						    { channel="zwave:device:dd17dc98:node7:thermostat_setpoint_heating" }
 Number  BathRoom_ThermMode          "Bad Temperatur Mode"                       <temperature>   (gBathroom)                         { channel="zwave:device:dd17dc98:node7:thermostat_mode" }	
 Number  BathRoom_BatteryLevel       "Bad Thermostat Batterielevel"              <battery>       (gBathroom, gBattery)               { channel="zwave:device:dd17dc98:node7:battery-level" }
+Contact BathRoom_DoorSensor         "Bad Türsensor Status"                      <contact>       (gBathroom)                         { channel="zwave:device:dd17dc98:node9:sensor_door" }
+Number  BathRoom_DoorBatteryLevel   "Bad Türsensor Batterielevel"               <battery>       (gBathroom, gBattery)               { channel="zwave:device:dd17dc98:node9:battery-level" }
 
 Number	DiningRoom_Temp 			"Esszimmer Temperatur [%.1f °C]"			<temperature>	(gDiningRoom, gTemperature)			{ channel="zwave:device:dd17dc98:node6:sensor_temperature" }	
 Number	DiningRoom_SetPoint     	"Esszimmer Temperatur Vorwahl [%.1f °C]"	<temperature>	(gDiningRoom)						{ channel="zwave:device:dd17dc98:node6:thermostat_setpoint_heating" }

@@ -1,0 +1,53 @@
+var Boolean windowIsOpen = false
+
+rule "Radiator bath room weekdays on"
+when
+    Time cron "0 55 6 ? * MON-FRI"
+then
+{
+    BathRoom_ThermMode.sendCommand(11)
+    BathRoom_SetPoint.sendCommand(16)
+    logInfo("RULE", "bath room: Turning the heat on")
+} 
+end
+
+rule "Radiator bath room weekdays off"
+when
+    Time cron "0 45 7 ? * MON-FRI"
+then
+{
+    if(BathRoom_DoorSensor == CLOSED && vEverybodyGone != OFF) 
+    {
+        BathRoom_SetPoint.sendCommand(5)
+        BathRoom_ThermMode.sendCommand(0)
+        logInfo("RULE", "bath room: Turning the heat down") 
+    }
+    else 
+    {        
+        logInfo("RULE", "bath room: prevented heating - nobody is home or window is open") 
+    }    
+} 
+end
+
+rule "Bathroom window open"
+when
+    Item BathRoom_DoorSensor received update OPEN
+then
+{
+    logInfo("RULE", "bath room: window has been opened") 
+
+    var i = 0
+    while((i = i + 1 ) < 3) 
+    {
+        Thread::sleep(60000)
+        windowIsOpen = BathRoom_DoorSensor.state == OPEN
+    }
+
+    if(windowIsOpen) 
+    {
+        BathRoom_SetPoint.sendCommand(5)
+        BathRoom_ThermMode.sendCommand(0)
+        logInfo("RULE", "bath room: window is open - turning the heat down") 
+    }
+}
+end
