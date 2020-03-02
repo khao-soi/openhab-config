@@ -6,7 +6,7 @@ rule "Michel away from home"
 when
     Item phoneMichelOnline changed to CLOSED
 then
-    logInfo("RULE", "Michel might be gone")
+    logInfo("RULE", "Michel might be gone") 
 
     var i = 0
     while((i = i + 1 ) < 3) 

@@ -6,7 +6,7 @@ when
 then
 {
     BathRoom_ThermMode.sendCommand(11)
-    BathRoom_SetPoint.sendCommand(16)
+    BathRoom_SetPoint.sendCommand(20)
     logInfo("RULE", "bath room: Turning the heat on")
 } 
 end
@@ -48,6 +48,13 @@ then
         BathRoom_SetPoint.sendCommand(5)
         BathRoom_ThermMode.sendCommand(0)
         logInfo("RULE", "bath room: window is open - turning the heat down") 
+    }
+
+    Thread::sleep(600000)
+
+    if(windowIsOpen && localCurrentTemperature < 15) 
+    {
+        sendTelegram("bot21", "Das Fenster im Bad ist offen, obwohl es draußen kalt ist...")
     }
 }
 end
