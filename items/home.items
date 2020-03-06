@@ -6,12 +6,14 @@ Group gWallplug
 Group gBathroom
 Group gDiningRoom
 
-// # Thermostat Mode:
-// 0: Off
-// 11: Economy Heat
-// 1: Heat
-// 15: Full Power
-// 31: Manual
+// #:   Thermostat Mode:
+// 0:   Off
+// 1:   Heat
+// 11:  Economy Heat
+// 15:  Full Power
+// 31:  Manual
+
+Switch  vHeatingSeason              "Define Heating Season"                     <heatingseason>
 
 Number	LivingRoom_Temp 			"Wohnzimmer Temperatur [%.1f °C]"			<temperature>	(gLivingRoom, gTemperature)			{ channel="zwave:device:dd17dc98:node3:sensor_temperature" }	
 Number	LivingRoom_SetPoint     	"Wohnzimmer Temperatur Vorwahl [%.1f °C]"	<temperature>	(gLivingRoom)						{ channel="zwave:device:dd17dc98:node3:thermostat_setpoint_heating" }
