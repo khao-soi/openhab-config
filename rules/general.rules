@@ -1,3 +1,14 @@
+rule "Init"
+when
+	System started
+then
+{
+    Thread::sleep(60000)
+    if (vHeatingSeason.state == NULL) 
+        vHeatingSeason.postUpdate(OFF)
+}
+end
+
 rule "check batteries"
 when
     Time cron "0 0 18 ? * WED,SUN"
