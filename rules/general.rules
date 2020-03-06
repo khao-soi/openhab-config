@@ -1,0 +1,16 @@
+rule "Check batteries"
+when
+    Time cron "0 0 18 ? * WED,SUN"
+then
+{
+    gBattery.members.forEach[item | 
+        
+        if(item.state < 25) {
+            var message = "Warnung: Item " + item.name + " hat nur noch " + item.state + "% Batterie.\n"
+
+            sendTelegram("bot21", message)
+            logInfo("Info", message) 
+        }
+    ]
+}
+end
