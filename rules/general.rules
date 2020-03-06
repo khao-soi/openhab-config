@@ -1,4 +1,4 @@
-rule "Check batteries"
+rule "check batteries"
 when
     Time cron "0 0 18 ? * WED,SUN"
 then
@@ -12,5 +12,34 @@ then
             logInfo("Info", message) 
         }
     ]
+}
+end
+
+rule "check heating season"
+when
+    Time cron "0 0 12 * * ?"
+then
+{
+    logInfo("Info", "checking heating season")
+    val currentMonth = now.getMonthOfYear
+
+    // summer
+    if(currentMonth >= 4 && currentMonth <= 10) {
+        if(vHeatingSeason.state == ON) {
+            logInfo("Info", "General switch for heating is now OFF")
+            postUpdate(vHeatingSeason, OFF)
+
+            sendTelegram("bot21", "Ich schalte jetzt die Heizungen ab. Habt einen schönen Sommer!")
+        }
+    }
+    // winter
+    else {
+        if(vHeatingSeason.state == OFF && localCurrentTemperature.state < 15|°C) {
+            logInfo("Info", "General switch for heating is now ON")
+            postUpdate(vHeatingSeason, ON)
+            
+            sendTelegram("bot21", "Ich schalte die Heizungen lieber ein. Es wird langsam kalt draußen.")
+        }
+    }
 }
 end
