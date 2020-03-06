@@ -52,7 +52,7 @@ then
 
     Thread::sleep(600000)
 
-    if(windowIsOpen && localCurrentTemperature < 15) 
+    if(BathRoom_DoorSensor.state == OPEN && localCurrentTemperature.state < 23|°C) 
     {
         sendTelegram("bot21", "Das Fenster im Bad ist offen, obwohl es draußen kalt ist...")
     }
