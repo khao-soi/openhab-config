@@ -1,26 +1,36 @@
 sitemap home label="H21" 
 {
-    Frame label="Alexa" icon="network" { Text item=vAlexaGone }
-    Frame label="Michel" icon="network" { Text item=vMichelGone }    
-    Frame label="Michel's Workbox" icon="network" { Text item=vMichelWorkBoxOnline }    
+    Frame label="Temperaturen"
+    { 
+        Text item=LivingRoom_Temp label="Wohntimmer [%.1f °C]"
+        Setpoint item=LivingRoom_SetPoint label="Wohnzimmer [%.1f °C]" minValue=8 maxValue=22 step=0.5
+        
+        Text item=BedRoom_Temp label="Schlafzimmer [%.1f °C]"
+        Setpoint item=BedRoom_SetPoint label="Schlafzimmer [%.1f °C]" minValue=8 maxValue=22 step=0.5
 
-    Text item=SpeedtestSummary 
-    {
-        Frame label="Results" 
-        {
-            Text item=SpeedtestResultDown
-            Text item=SpeedtestResultUp
-            Text item=SpeedtestResultPing
-        }
-        Frame label="Controlling" 
-        {
-            Text item=SpeedtestResultDate
-            Text item=SpeedtestRunning label="Speedtest [%s]" visibility=[SpeedtestRunning != "-"]
-            Switch item=SpeedtestRerun mappings=[ON="Start"]
-        }
-        Frame label="Statistics" 
-        {
-            Text label="..." icon="speedtest_analytics8"
-        }
+        Text item=BathRoom_Temp label="Bad [%.1f °C]"
+        Setpoint item=BathRoom_SetPoint label="Bad [%.1f °C]" minValue=8 maxValue=22 step=0.5
+
+        Text item=DiningRoom_Temp label="Esszimmer [%.1f °C]"
+        Setpoint item=DiningRoom_SetPoint label="Esszimmer [%.1f °C]" minValue=8 maxValue=22 step=0.5
+
+        Text item=localCurrentTemperature label="Außen [%.1f °C]"
+    }
+
+    Frame label="Gerätestatus"
+    { 
+        Text label="Alexa ist Abwesend" visibility=[vAlexaGone=="ON"]
+        Text label="Alexa ist Zuhause" visibility=[vAlexaGone=="OFF"]
+
+        Text label="Michel ist Abwesend" visibility=[vMichelGone=="ON"]
+        Text label="Michel ist Zuhause" visibility=[vMichelGone=="OFF"]
+
+        //Text item=vMichelWorkBoxOnline
+    }
+
+    Frame label="Schalter" 
+    { 
+        Switch item=LivingRoom_WallplugTV label="TV-Licht" icon="light"
+        Switch item=vHeatingSeason label="Globaler Heitungsschalter" icon="heating"
     }
 }
