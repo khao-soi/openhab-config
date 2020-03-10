@@ -75,7 +75,7 @@ then
 {
     someIsHereAtNine = false
 
-    if(vEverybodyGone != OFF) 
+    if(vEverybodyGone == OFF) 
     {
         someIsHereAtNine = true
         logInfo("RULE", "Someone is here weekdays at nine")
@@ -88,10 +88,12 @@ when
     Time cron "0 30 9 ? * MON-FRI"
 then
 {
-    if(vEverybodyGone != OFF && someIsHereAtNine == true) 
+    if(vEverybodyGone == OFF && someIsHereAtNine == true) 
     {
         LivingRoom_SetPoint.sendCommand(21)
         logInfo("RULE", "Some is here weekdays, turn the heat on")
+        sendTelegram("bot21", "Jemand scheint zuhause zu sein, ich schalte mal die Heizung an.")
+
     }
 }
 end

@@ -35,6 +35,7 @@ when
 then
     logInfo("RULE", "Michel is back home")
     postUpdate(vMichelGone, OFF)
+    say("willkommen zuhause michel")
 end
 
 // Alexa
@@ -69,6 +70,7 @@ when
 then
     logInfo("RULE", "Alexa is back home")
     postUpdate(vAlexaGone, OFF)
+    say("huhu")
 end
 
 // Everybody
