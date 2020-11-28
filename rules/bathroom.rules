@@ -52,9 +52,21 @@ then
 
     Thread::sleep(600000)
 
-    if(BathRoom_DoorSensor.state == OPEN && localCurrentTemperature.state < 23|°C) 
+    if(BathRoom_DoorSensor.state == OPEN && localCurrentTemperature.state < 12|°C) 
     {
         sendTelegram("bot21", "Das Fenster im Bad ist offen, obwohl es draußen kalt ist...")
     }
+}
+end
+
+rule "bath room window closed"
+when
+    Item BathRoom_DoorSensor received update CLOSED
+then
+{
+    logInfo("RULE", "bath room: window has been closed") 
+
+    LivingRoom_ThermMode.sendCommand(1) // eco heat
+    BathRoom_SetPoint.sendCommand(16);
 }
 end
